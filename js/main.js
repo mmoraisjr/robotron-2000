@@ -1,17 +1,18 @@
-const controle = document.querySelectorAll(".controle-ajuste");
+const controle = document.querySelectorAll("[data-controle]");
 
 controle.forEach( (elemento) => {
     elemento.addEventListener("click",
         (e) => {
-            controlaNivel(e.target.textContent, e.target.parentNode);
+            controlaNivel(e.target.dataset.controle, e.target.parentNode);
         })
 });
 
 function controlaNivel(operacao, componente) {
-    const peca = componente.querySelector(".controle-contador");
+    const peca = componente.querySelector("[data-contador]");
 
-    if (operacao === controle.textContent) {
+    if (operacao === "-") {
         peca.value = parseInt(peca.value) - 1;
+
     } else {
         peca.value = parseInt(peca.value) + 1;
     }
