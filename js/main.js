@@ -1,28 +1,18 @@
-const subtrair = document.querySelector("#subtrair");
-const somar = document.querySelector("#somar");
-const braco = document.querySelector("#braco");
-
 const controle = document.querySelectorAll(".controle-ajuste");
 
 controle.forEach( (elemento) => {
-    elemento.addEventListener("click"),
-    () => {
-      console.log("ok");
-    };
+    elemento.addEventListener("click",
+        (e) => {
+            controlaNivel(e.target.textContent, e.target.parentNode);
+        })
 });
 
-somar.addEventListener("click", () => {
-  controlaNivel("somar");
-});
+function controlaNivel(operacao, componente) {
+    const peca = componente.querySelector(".controle-contador");
 
-subtrair.addEventListener("click", () => {
-  controlaNivel("subtrair");
-});
-
-function controlaNivel(operacao) {
-  if (operacao === "subtrair") {
-    braco.value = parseInt(braco.value) - 1;
-  } else {
-    braco.value = parseInt(braco.value) + 1;
-  }
+    if (operacao === controle.textContent) {
+        peca.value = parseInt(peca.value) - 1;
+    } else {
+        peca.value = parseInt(peca.value) + 1;
+    }
 }
